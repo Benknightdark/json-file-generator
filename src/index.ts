@@ -1,31 +1,26 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import { build } from "./helpers/generator";
+
 
 (async () => {
-    try {
-        const argv = require('minimist2')(process.argv.slice(2));
-        // console.dir(argv);
-        // console.dir(argv['f']);
-        const folder = argv['f'] === undefined ? 'sample' : argv['f'];
-        const masterJsonString = await fs.readFileSync(path.resolve(__dirname, `${folder}/master.json`), 'UTF-8');
-        const configJsonString = await fs.readFileSync(path.resolve(__dirname, `${folder}/config.json`), 'UTF-8');
-        const masterData = JSON.parse(masterJsonString);
-        const configData = JSON.parse(configJsonString);
-        const configObjects = Object.keys(configData);
-        const outPutfilePath=path.resolve(__dirname, `${folder}/Output/`);
-        !fs.existsSync(outPutfilePath) && fs.mkdirSync(outPutfilePath);
-        configObjects.map(async b =>  {
-            console.log(b)
-            console.log("---------------------------")
-            const nData = {...masterData,...configData[b]}
-            console.log(nData)
-            console.log("---------------------------")
-            await fs.writeFileSync(`${outPutfilePath}/${b}.json`,new Buffer(JSON.stringify(nData, null, '\t')));
-        })
-        return;
-    } catch (error) {
-        throw error;
-    }
-
-
+   const dirName = __dirname;
+   // await build(dirName);
+   const chalk = require('chalk');
+   const clear = require('clear');
+   const figlet = require('figlet');
+   const path = require('path');
+   const program = require('commander');
+   clear();
+   console.log(
+      chalk.red(
+         figlet.textSync('JSONFile-Generator-cli', { horizontalLayout: 'full' })
+      )
+   );
+   program
+  .version('0.0.1')
+  .description("An CLI for creating JSON File")
+  .option('-f', 'Assing your JSON file folder')
+  .parse(process.argv);
+  if (!process.argv.slice(2).length) {
+	program.outputHelp();
+}
 })()
