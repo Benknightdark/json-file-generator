@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 export const build=async (dirName:string,fileFolder:string)=>{
     try {
-        const folder =fileFolder; //argv['f'] === undefined ? 'sample' : fileFolder;
+        const folder =fileFolder;
         const masterJsonString = await fs.readFileSync(path.resolve(dirName, `${folder}/master.json`), 'UTF-8');
         const configJsonString = await fs.readFileSync(path.resolve(dirName, `${folder}/config.json`), 'UTF-8');
         const masterData = JSON.parse(masterJsonString);

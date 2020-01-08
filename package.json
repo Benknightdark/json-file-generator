@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "description": "",
   "bin":{
-    "json-generator":"./build/index.js"
+    "json-file-generator":"./build/index.js"
   },
   "scripts": {
     "start:build": "tsc -w",
