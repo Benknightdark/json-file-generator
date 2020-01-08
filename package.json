@@ -1,13 +1,15 @@
 {
-  "name": "dotnetcoreappsettingjsonfilegenerator",
+  "name": "jsonfile-generator",
+  "main": "build/index.js",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start:build": "tsc -w",
     "start:run": "nodemon ./build/index.js",
     "start": "concurrently npm:start:* ",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare" : "npm run build"
+
   },
   "author": "",
   "license": "ISC",
