@@ -1,7 +1,7 @@
 {
   "name": "jsonfile-generator",
   "main": "build/index.js",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "",
   "bin":{
     "json-file-generator":"./build/index.js"

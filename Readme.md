@@ -32,3 +32,7 @@
     - appsetting.Development.json
     - appsetting.Staging.json
     - appsetting.Production.json
+
+
+# Github Repository
+- https://github.com/Benknightdark/json-file-generator    
