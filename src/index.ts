@@ -2,8 +2,7 @@ import { build } from "./helpers/generator";
 
 
 (async () => {
-   const dirName = __dirname;
-   // await build(dirName);
+
    const chalk = require('chalk');
    const clear = require('clear');
    const figlet = require('figlet');
@@ -16,11 +15,20 @@ import { build } from "./helpers/generator";
       )
    );
    program
-  .version('0.0.1')
-  .description("An CLI for creating JSON File")
-  .option('-f', 'Assing your JSON file folder')
-  .parse(process.argv);
-  if (!process.argv.slice(2).length) {
-	program.outputHelp();
-}
+      .version('0.0.1')
+      .description("An CLI for creating JSON File")
+      .option('-f', 'Assing your JSON file folder')
+      .parse(process.argv);
+
+
+   if (!process.argv.slice(2).length) {
+      program.outputHelp();
+      return;
+   }
+   const dirName = __dirname;
+   console.log(dirName)
+   const argv = require('minimist2')(process.argv.slice(2));
+   await build(dirName, argv['f']);
+   return;
+
 })()

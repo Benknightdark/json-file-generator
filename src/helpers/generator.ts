@@ -1,11 +1,8 @@
 import * as fs from 'fs'
 import * as path from 'path'
-export const build=async (dirName:string)=>{
+export const build=async (dirName:string,fileFolder:string)=>{
     try {
-        const argv = require('minimist2')(process.argv.slice(2));
-        // console.dir(argv);
-        // console.dir(argv['f']);
-        const folder = argv['f'] === undefined ? 'sample' : argv['f'];
+        const folder =fileFolder; //argv['f'] === undefined ? 'sample' : fileFolder;
         const masterJsonString = await fs.readFileSync(path.resolve(dirName, `${folder}/master.json`), 'UTF-8');
         const configJsonString = await fs.readFileSync(path.resolve(dirName, `${folder}/config.json`), 'UTF-8');
         const masterData = JSON.parse(masterJsonString);
