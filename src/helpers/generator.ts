@@ -16,7 +16,7 @@ export const build=async (dirName:string,fileFolder:string)=>{
             const nData = {...masterData,...configData[b]}
             console.log(nData)
             console.log("---------------------------")
-            await fs.writeFileSync(`${outPutfilePath}/${b}.json`,new Buffer(JSON.stringify(nData, null, '\t')));
+            await fs.writeFileSync(`${outPutfilePath}/${b}.json`, Buffer.from(JSON.stringify(nData, null, '\t')));
         })
         return;
     } catch (error) {
