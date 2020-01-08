@@ -13,7 +13,7 @@ import { build } from "./helpers/generator";
    clear();
    console.log(
       chalk.red(
-         figlet.textSync('JSONFile-Generator-cli', { horizontalLayout: 'full' })
+         figlet.textSync('JSONFile-Generator-cli!!', { horizontalLayout: 'full' })
       )
    );
    program
