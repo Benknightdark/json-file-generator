@@ -20,8 +20,7 @@
         "target": "dev"
     },
     "appsetting.Staging": {
-        "target": "staging",
-        "hi":["fdsfsdfsdf"]
+        "target": "staging"
     },
     "appsetting.Production": {
         "target": "prod"
@@ -30,6 +29,10 @@
 ```
 - 與Sample資料夾同一層的command line界面裡輸入  jsonfile-generator -f Sample
 - 最後在Sampple資料夾裡會產生一個Output資料夾，裡面會有三個json檔
-    - Development.json
-    - Staging.json
-    - Production.json
+    - appsetting.Development.json
+    - appsetting.Staging.json
+    - appsetting.Production.json
+
+
+# Github Repository
+- https://github.com/Benknightdark/json-file-generator    
