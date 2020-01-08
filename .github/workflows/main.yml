@@ -1,6 +1,10 @@
 name: Publish
 
 on:
+    # push 到 master 分支時會觸發
+  push:
+    branches:
+    - master
   release:
     types: [published]
 
