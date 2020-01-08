@@ -1,0 +1,12 @@
+{
+    "Developmnet": {
+        "target": "dev"
+    },
+    "Staging": {
+        "target": "staging",
+        "hi":["fdsfsdfsdf"]
+    },
+    "Production": {
+        "target": "prod"
+    }
+}
