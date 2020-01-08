@@ -1,0 +1,11 @@
+{
+    "Developmnet": {
+        "target": "dev"
+    },
+    "Staging": {
+        "target": "staging"
+    },
+    "Production": {
+        "target": "prod"
+    }
+}

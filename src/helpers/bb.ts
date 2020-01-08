@@ -1,0 +1,1 @@
+export const bb=()=>{console.log('bb coming')}
