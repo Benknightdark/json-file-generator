@@ -1,0 +1,11 @@
+{
+    "appsetting.Development": {
+        "target": "appsetting.Development"
+    },
+    "appsetting.Staging": {
+        "target": "appsetting.Staging"
+    },
+    "appsetting.Production": {
+        "target": "appsetting.Production"
+    }
+}

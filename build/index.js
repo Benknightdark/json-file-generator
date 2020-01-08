@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,12 +46,57 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var fs = __importStar(require("fs"));
+var path = __importStar(require("path"));
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var argv, folder;
+    var argv, folder, masterJsonString, configJsonString, masterData_1, configData_1, configObjects, outPutfilePath_1, error_1;
     return __generator(this, function (_a) {
-        argv = require('minimist2')(process.argv.slice(2));
-        folder = argv['f'] === undefined ? 'sample' : argv['f'];
-        console.log(folder);
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 3, , 4]);
+                argv = require('minimist2')(process.argv.slice(2));
+                folder = argv['f'] === undefined ? 'sample' : argv['f'];
+                return [4 /*yield*/, fs.readFileSync(path.resolve(__dirname, folder + "/master.json"), 'UTF-8')];
+            case 1:
+                masterJsonString = _a.sent();
+                return [4 /*yield*/, fs.readFileSync(path.resolve(__dirname, folder + "/config.json"), 'UTF-8')];
+            case 2:
+                configJsonString = _a.sent();
+                masterData_1 = JSON.parse(masterJsonString);
+                configData_1 = JSON.parse(configJsonString);
+                configObjects = Object.keys(configData_1);
+                outPutfilePath_1 = path.resolve(__dirname, folder + "/Output/");
+                !fs.existsSync(outPutfilePath_1) && fs.mkdirSync(outPutfilePath_1);
+                configObjects.map(function (b) { return __awaiter(void 0, void 0, void 0, function () {
+                    var nData;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                console.log(b);
+                                console.log("---------------------------");
+                                nData = __assign(__assign({}, masterData_1), configData_1[b]);
+                                console.log(nData);
+                                console.log("---------------------------");
+                                return [4 /*yield*/, fs.writeFileSync(outPutfilePath_1 + "/" + b + ".json", new Buffer(JSON.stringify(nData, null, '\t')))];
+                            case 1:
+                                _a.sent();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                return [2 /*return*/];
+            case 3:
+                error_1 = _a.sent();
+                throw error_1;
+            case 4: return [2 /*return*/];
+        }
     });
 }); })();
