@@ -1,7 +1,7 @@
 {
   "name": "jsonfile-generator",
   "main": "build/index.js",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "repository": {
     "url": "https://github.com/Benknightdark/json-file-generator"
   },
